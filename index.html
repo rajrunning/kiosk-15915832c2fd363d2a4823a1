@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Family Dashboard</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600;700&display=swap');
+
+  :root{
+    --cream:#FBF1DE;
+    --cream-deep:#F3E4C4;
+    --ink:#2B241A;
+    --maroon:#7A1F2B;
+    --maroon-deep:#5A1420;
+    --gold:#B8892B;
+    --gold-light:#E4C674;
+    --leaf:#3F5B3C;
+    --leaf-light:#E6EEE1;
+    --amber-bg:#FBEBD2;
+    --amber-line:#D9A94E;
+    --line:#E3D3AC;
+    --muted:#8a8065;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{height:100%;}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    padding:28px 40px 20px;
+    display:flex;
+    flex-direction:column;
+    background-image:
+      radial-gradient(circle at 100% 0%, rgba(184,137,43,0.10), transparent 40%),
+      radial-gradient(circle at 0% 100%, rgba(122,31,43,0.06), transparent 45%);
+  }
+
+  header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    border-bottom:3px solid var(--ink);
+    padding-bottom:14px;
+    margin-bottom:14px;
+  }
+  .date-block{display:flex; align-items:baseline; gap:16px;}
+  .date-num{
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:64px;
+    line-height:0.8;
+    color:var(--maroon);
+  }
+  .date-meta{display:flex; flex-direction:column; gap:2px;}
+  .day-name{font-family:'Fraunces', serif; font-size:24px; font-weight:600;}
+  .month-year{font-size:14px; letter-spacing:0.08em; text-transform:uppercase; color:var(--gold); font-weight:600;}
+  .household-tag{text-align:right; font-family:'Fraunces', serif; font-style:italic; font-size:18px; color:var(--maroon-deep); opacity:0.85;}
+  .household-tag span{display:block; font-family:'Inter', sans-serif; font-style:normal; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink); opacity:0.5; margin-top:4px;}
+
+  .status-strip{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:var(--amber-bg);
+    border:1px solid var(--amber-line);
+    border-radius:5px;
+    padding:9px 16px;
+    margin-bottom:16px;
+    font-size:13.5px;
+  }
+  .status-strip .icon{font-size:16px;}
+  .status-strip b{color:var(--maroon-deep);}
+
+  .hero{
+    background:var(--maroon);
+    color:var(--cream);
+    border-radius:6px;
+    padding:18px 24px;
+    display:flex;
+    align-items:center;
+    gap:20px;
+    margin-bottom:16px;
+    box-shadow:0 6px 18px rgba(90,20,32,0.25);
+    transition:opacity 0.25s ease;
+  }
+  .hero-badge{
+    font-family:'Fraunces', serif; font-weight:700; font-size:13px; letter-spacing:0.1em; text-transform:uppercase;
+    background:var(--gold-light); color:var(--maroon-deep); padding:5px 12px; border-radius:100px; flex-shrink:0;
+  }
+  .hero-body{flex:1;}
+  .hero-body h2{font-family:'Fraunces', serif; font-weight:600; font-size:22px; margin-bottom:2px;}
+  .hero-body p{font-size:14px; opacity:0.9;}
+  .hero-done-btn{
+    background:var(--gold-light); color:var(--maroon-deep); border:none; border-radius:5px;
+    padding:10px 16px; font-weight:700; font-size:13px; cursor:pointer; flex-shrink:0; font-family:'Inter',sans-serif;
+  }
+  .hero-empty{
+    background:var(--leaf-light); border:1px dashed var(--leaf); color:var(--leaf);
+    padding:14px 22px; border-radius:6px; margin-bottom:16px; font-size:14px; font-style:italic;
+  }
+
+  .grid{
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr 1fr;
+    gap:20px;
+    flex:1;
+    min-height:0;
+  }
+
+  .panel{
+    background:var(--cream-deep);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:18px 20px;
+    display:flex;
+    flex-direction:column;
+    min-height:0;
+  }
+  .panel h3{
+    font-family:'Fraunces', serif; font-size:17px; font-weight:600; display:flex; align-items:center; gap:9px;
+    margin-bottom:12px; color:var(--maroon-deep); flex-shrink:0;
+  }
+  .panel h3 .dot{width:9px; height:9px; border-radius:50%; background:var(--amber-line); flex-shrink:0;}
+
+  .scroll-area{overflow-y:auto; flex:1; min-height:0; padding-right:4px;}
+
+  .item{display:flex; gap:12px; padding:12px 0; border-top:1px solid var(--line); align-items:flex-start;}
+  .item:first-of-type{border-top:none; padding-top:0;}
+  .item.away{opacity:0.55;}
+  .item-date{font-family:'Fraunces', serif; font-weight:700; font-size:13.5px; color:var(--maroon); width:52px; flex-shrink:0;}
+  .item-body{flex:1;}
+  .item-body h4{font-size:14.5px; font-weight:600; margin-bottom:2px;}
+  .item-body p{font-size:13px; color:#5a5142; line-height:1.35;}
+  .away-tag{display:inline-block; font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; color:var(--muted); margin-top:3px;}
+  .item-done-btn{
+    background:none; border:1.5px solid var(--maroon); color:var(--maroon); border-radius:100px;
+    width:26px; height:26px; flex-shrink:0; cursor:pointer; font-size:13px; line-height:1;
+  }
+  .item-done-btn:hover{background:var(--maroon); color:var(--cream);}
+
+  .meal-card{background:var(--leaf-light); border-left:4px solid var(--leaf); border-radius:4px; padding:13px 16px; margin-bottom:10px;}
+  .meal-card:last-child{margin-bottom:0;}
+  .meal-day{font-family:'Fraunces', serif; font-weight:700; font-size:13px; text-transform:uppercase; letter-spacing:0.05em; color:var(--leaf); margin-bottom:3px;}
+  .meal-dish{font-size:16px; font-weight:600;}
+  .meal-note{font-size:12.5px; color:#5a5142; margin-top:2px; font-style:italic;}
+
+  .grocery-header{display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; flex-shrink:0;}
+  .bulk-date{font-size:12px; background:var(--amber-bg); border:1px solid var(--amber-line); padding:4px 10px; border-radius:100px; color:var(--maroon-deep); font-weight:600; white-space:nowrap;}
+  .grocery-empty{font-size:13.5px; color:#7a715f; font-style:italic; padding:6px 0;}
+
+  footer{margin-top:14px; display:flex; justify-content:space-between; font-size:11px; color:var(--muted); letter-spacing:0.02em; flex-shrink:0;}
+</style>
+</head>
+<body>
+
+  <header>
+    <div class="date-block">
+      <div class="date-num">20</div>
+      <div class="date-meta">
+        <div class="day-name">Thursday</div>
+        <div class="month-year">August 2026</div>
+      </div>
+    </div>
+    <div class="household-tag">Marri Family<span id="clock">--:--</span></div>
+  </header>
+
+  <div class="status-strip">
+    <span class="icon">✈️</span>
+    <span><b>Numitha &amp; Sovikshith travel to Hyderabad Sun 23 → back Sat 29.</b> Pruthvi home alone that week — school items during this window are flagged below.</span>
+  </div>
+
+  <div id="heroArea"></div>
+
+  <div class="grid">
+    <div class="panel">
+      <h3><span class="dot"></span>Needs prep</h3>
+      <div class="scroll-area" id="prepList"></div>
+    </div>
+
+    <div class="panel">
+      <h3><span class="dot" style="background:var(--leaf);"></span>What to cook</h3>
+      <div class="meal-card">
+        <div class="meal-day">Friday</div>
+        <div class="meal-dish">Chow Chow Kura + rasam</div>
+        <div class="meal-note">First time cooking this vegetable</div>
+      </div>
+      <div class="meal-card">
+        <div class="meal-day">Saturday</div>
+        <div class="meal-dish">Pappu + papad</div>
+        <div class="meal-note">Usual Saturday</div>
+      </div>
+      <div class="meal-card" style="border-left-color:var(--amber-line); background:var(--amber-bg);">
+        <div class="meal-day" style="color:var(--maroon-deep);">While away (Sun–Sat)</div>
+        <div class="meal-dish" style="font-size:14.5px;">Sun: chicken curry (Numitha) → lasts Tue<br>Wed: pappu (maid) → lasts Fri<br>Sat 29: not planned yet</div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="grocery-header">
+        <h3 style="margin-bottom:0;"><span class="dot" style="background:var(--gold);"></span>Grocery</h3>
+        <span class="bulk-date" id="bulkDate">Bulk-shop: not set</span>
+      </div>
+      <div class="scroll-area" id="groceryList">
+        <div class="item"><div class="item-body"><h4>Carrot</h4></div></div>
+        <div class="item"><div class="item-body"><h4>Bitter gourd</h4></div></div>
+        <div class="item"><div class="item-body"><h4>Coccinia</h4></div></div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <span>Static v1 — marking items done resets on refresh until this is wired to live data. Real fix: sync with the Notion "Not relevant" checkbox.</span>
+    <span>Family Dashboard</span>
+  </footer>
+
+<script>
+  const items = [
+    {date:"Thu 20", title:"🔴 Varamahalakshmi & Onam - school (attire + flowers for pookalam)", desc:"No additional details", away:false},
+    {date:"Fri 21", title:"School holiday - Varamahalakshmi (no action needed)", desc:"No additional details", away:false},
+    {date:"Sat 22", title:"PTM Section A + Tens & Ones activity (materials: A4 sheet, colours, bowls, grains)", desc:"No additional details", away:false},
+    {date:"Sat 22", title:"🚆 Tatkal booking window - Bangalore to Hyderabad, 1A/2A (opens 10:00 AM sharp, for Sun Aug 23 travel)", desc:"No additional details", away:false},
+    {date:"Mon 24", title:"Animal Habitat resource item due (check WhatsApp which one)", desc:"No additional details", away:false},
+    {date:"Fri 28", title:"🪔 Raksha Bandhan school celebration - Sovikshith will likely MISS this (still in Hyderabad, back Sat Aug 29)", desc:"No additional details", away:false},
+  ];
+
+  function render(){
+    const heroArea = document.getElementById('heroArea');
+    const list = document.getElementById('prepList');
+
+    const actionable = items.filter(i => !i.away);
+    const away = items.filter(i => i.away);
+
+    if(actionable.length){
+      const top = actionable[0];
+      heroArea.innerHTML = `
+        <div class="hero">
+          <div class="hero-badge">Next up</div>
+          <div class="hero-body"><h2>${top.title}</h2><p>${top.desc} — ${top.date}</p></div>
+          <button class="hero-done-btn" onclick="markDone('${top.title}')">Mark done ✓</button>
+        </div>`;
+    } else {
+      heroArea.innerHTML = `<div class="hero-empty">Nothing urgent right now ✓</div>`;
+    }
+
+    const rest = actionable.slice(1);
+    list.innerHTML = rest.map(i => `
+      <div class="item">
+        <div class="item-date">${i.date}</div>
+        <div class="item-body"><h4>${i.title}</h4><p>${i.desc}</p></div>
+        <button class="item-done-btn" onclick="markDone('${i.title}')">✓</button>
+      </div>`).join('') +
+      away.map(i => `
+      <div class="item away">
+        <div class="item-date">${i.date}</div>
+        <div class="item-body">
+          <h4>${i.title}</h4>
+          <p>${i.desc}</p>
+          <span class="away-tag">✈️ Away — will likely miss</span>
+        </div>
+      </div>`).join('');
+  }
+
+  function markDone(title){
+    const idx = items.findIndex(i => i.title === title);
+    if(idx > -1) items.splice(idx, 1);
+    render();
+  }
+
+  render();
+
+  function tick(){
+    document.getElementById('clock').textContent = new Date().toLocaleTimeString('en-IN', {hour:'2-digit', minute:'2-digit'});
+  }
+  tick();
+  setInterval(tick, 30000);
+</script>
+
+</body>
+</html>
