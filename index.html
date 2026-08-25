@@ -166,10 +166,7 @@
     <div class="household-tag">Family<span id="clock">--:--</span></div>
   </header>
 
-  <div class="status-strip" id="travelBanner" style="display:none">
-    <span class="icon">✈️</span>
-    <span></span>
-  </div>
+  <div class="status-strip" id="travelBanner" style="display:none"></div>
 
   <div id="heroArea"></div>
 
@@ -181,19 +178,9 @@
 
     <div class="panel">
       <h3><span class="dot" style="background:var(--leaf);"></span>What to cook</h3>
-      <div class="meal-card">
-        <div class="meal-day">Friday</div>
-        <div class="meal-dish">Chow Chow Kura + rasam</div>
-        <div class="meal-note">First time cooking this vegetable</div>
-      </div>
-      <div class="meal-card">
-        <div class="meal-day">Saturday</div>
-        <div class="meal-dish">Pappu + papad</div>
-        <div class="meal-note">Usual Saturday</div>
-      </div>
-      <div class="meal-card" style="border-left-color:var(--amber-line); background:var(--amber-bg);">
-        <div class="meal-day" style="color:var(--maroon-deep);">While away (Sun–Sat)</div>
-        <div class="meal-dish" style="font-size:14.5px;">Sun: chicken curry (Numi) → lasts Tue<br>Wed: pappu (maid) → lasts Fri<br>Sat 29: not planned yet</div>
+      <div id="mealsList">
+        <div class="meal-card"><div class="meal-day">Tuesday — Breakfast</div><div class="meal-dish">Boiled eggs + ragi malt</div></div>
+        <div class="meal-card"><div class="meal-day">Tuesday</div><div class="meal-dish">Coccinia curry</div></div>
       </div>
     </div>
 
@@ -217,10 +204,8 @@
 
 <script>
   const items = [
-    {date:"Tue 25", title:"🙏 TTD: ₹300 Special Entry Darshan (Nov quota) — releases 10:00 AM sharp, sells out in minutes", desc:"No additional details", away:false},
-    {date:"Tue 25", title:"🙏 TTD: Accommodation booking - Tirumala & Tirupati (Nov quota) — releases 3:00 PM sharp", desc:"No additional details", away:false},
     {date:"Wed 26", title:"School holiday — Eid (EuroKids Abbigere; daycare WILL be working)", desc:"Auto-added from email. Source: \"EuroJunior August\" (received 19 Aug 2026). From the EuroKids Abbigere / Euro Junior August 2026 calendar PDF: \"School will remain closed on account of EID. Classes will resume as per the regular schedule on the next working day. (Daycare will be working)\"", away:false},
-    {date:"Fri 28", title:"🪔 Raksha Bandhan school celebration - Sovikshith will likely MISS this (still in Hyderabad, back Sat Aug 29)", desc:"No additional details", away:false},
+    {date:"Fri 28", title:"🪔 Raksha Bandhan school celebration — Sovik will likely miss this, back Sat Aug 29", desc:"No additional details", away:false},
     {date:"Fri 28", title:"Email school calendar PDF", desc:"Reminder to send the school calendar PDF via email.", away:false},
     {date:"Sat 29", title:"Weekend Fun Activity — plant care (water, remove dried leaves, wipe dust)", desc:"Auto-added from email. Source: \"EuroJunior August\" (received 19 Aug 2026). EuroKids Abbigere weekend fun activity for 29 Aug 2026: encourage child to water the plants, remove dried leaves and gently wipe dust off leaves. Video can be shared with school or posted on Instagram tagging @eurokids_abbigere.", away:false},
     {date:"Sat 29", title:"PTM Section B — EuroKids Abbigere (time via WhatsApp)", desc:"Auto-added from email. Source: \"EuroJunior August\" (received 19 Aug 2026). From the EuroKids Abbigere / Euro Junior August 2026 calendar PDF: 1st Parent-Teacher Meeting (PTM) for \"B Section\". Time slots will be shared individually via WhatsApp.", away:false},
