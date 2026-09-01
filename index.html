@@ -57,8 +57,14 @@
   .month-year{font-size:14px; letter-spacing:0.08em; text-transform:uppercase; color:var(--gold); font-weight:600;}
   .household-tag{text-align:right; font-family:'Fraunces', serif; font-style:italic; font-size:18px; color:var(--maroon-deep); opacity:0.85;}
   .household-tag span{display:block; font-family:'Inter', sans-serif; font-style:normal; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink); opacity:0.5; margin-top:4px;}
-  .weather{display:flex; flex-direction:column; align-items:center; gap:1px; font-family:'Inter', sans-serif;}
-  .weather-temp{font-family:'Fraunces', serif; font-weight:700; font-size:22px; color:var(--maroon);}
+  .weather{
+    display:flex; align-items:center; gap:10px; align-self:center;
+    background:var(--amber-bg); border:1px solid var(--amber-line); border-radius:8px;
+    padding:8px 16px; font-family:'Inter', sans-serif;
+  }
+  .weather-icon{font-size:26px; line-height:1;}
+  .weather-main{display:flex; flex-direction:column; gap:1px;}
+  .weather-temp{font-family:'Fraunces', serif; font-weight:700; font-size:20px; color:var(--maroon); line-height:1.1;}
   .weather-label{font-size:11px; letter-spacing:0.04em; color:var(--muted); text-transform:uppercase;}
 
   .status-strip{
@@ -130,6 +136,7 @@
 
   .item{display:flex; gap:12px; padding:12px 0; border-top:1px solid var(--line); align-items:flex-start;}
   .item:first-of-type{border-top:none; padding-top:0;}
+  .grocery-section-label + .item{border-top:none; padding-top:0;}
   .item.away{opacity:0.55;}
   .item-date{font-family:'Fraunces', serif; font-weight:700; font-size:13.5px; color:var(--maroon); width:52px; flex-shrink:0;}
   .item-body{flex:1;}
@@ -151,6 +158,12 @@
   .grocery-header{display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; flex-shrink:0;}
   .bulk-date{font-size:12px; background:var(--amber-bg); border:1px solid var(--amber-line); padding:4px 10px; border-radius:100px; color:var(--maroon-deep); font-weight:600; white-space:nowrap;}
   .grocery-empty{font-size:13.5px; color:#7a715f; font-style:italic; padding:6px 0;}
+  .grocery-section-label{
+    font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase;
+    color:var(--muted); padding:10px 0 4px;
+  }
+  .grocery-section-label:first-child{padding-top:0;}
+  .grocery-section-label.event{color:var(--maroon);}
 
   .family-manager{
     background:var(--cream-deep);
@@ -186,7 +199,7 @@
         <div class="month-year">September 2026</div>
       </div>
     </div>
-    <div class="weather" id="weatherWidget"><span class="weather-temp">29°/19°</span><span class="weather-label">Drizzle · 61% rain</span></div>
+    <div class="weather" id="weatherWidget"><span class="weather-icon">🌦️</span><span class="weather-main"><span class="weather-temp">28°/20°</span><span class="weather-label">Light showers · 91% rain</span></span></div>
     <div class="household-tag">Family<span id="clock">--:--</span></div>
   </header>
 
@@ -204,9 +217,9 @@
       <h3><span class="dot" style="background:var(--leaf);"></span>What to cook</h3>
       <div id="mealsList">
         <div class="meal-card"><div class="meal-day">Tuesday — Breakfast</div><div class="meal-dish">Boiled eggs + ragi malt</div></div>
-        <div class="meal-card"><div class="meal-day">Tuesday</div><div class="meal-dish">Egg pulusu</div></div>
+        <div class="meal-card"><div class="meal-day">Tuesday</div><div class="meal-dish">Pappu + papad</div></div>
         <div class="meal-card"><div class="meal-day">Wednesday — Breakfast</div><div class="meal-dish">Boiled eggs + ragi malt</div></div>
-        <div class="meal-card"><div class="meal-day">Wednesday</div><div class="meal-dish">Egg pulusu</div></div>
+        <div class="meal-card"><div class="meal-day">Wednesday</div><div class="meal-dish">Pappu + papad</div></div>
       </div>
     </div>
 
@@ -216,12 +229,24 @@
         <span class="bulk-date" id="bulkDate">Bulk-shop: Tue, Sep 8 (low on Rice, Toor dal (Kandi pappu))</span>
       </div>
       <div class="scroll-area" id="groceryList">
-        <div class="item"><div class="item-body"><h4>Tomatoes</h4></div></div>
+        <div class="grocery-section-label">Everyday</div><div class="item"><div class="item-body"><h4>Tomatoes</h4></div></div>
         <div class="item"><div class="item-body"><h4>Toor dal (Kandi pappu)</h4></div></div>
         <div class="item"><div class="item-body"><h4>Millets</h4></div></div>
         <div class="item"><div class="item-body"><h4>Prawns</h4></div></div>
         <div class="item"><div class="item-body"><h4>Bread</h4></div></div>
-        <div class="item"><div class="item-body"><h4>Curd</h4></div></div>
+        <div class="item"><div class="item-body"><h4>Milmaker</h4></div></div>
+        <div class="item"><div class="item-body"><h4>Chapati flour (Atta)</h4></div></div>
+        <div class="item"><div class="item-body"><h4>Rice bran oil</h4></div></div>
+        <div class="item"><div class="item-body"><h4>Dry dates (Karjur)</h4></div></div>
+        <div class="item"><div class="item-body"><h4>Rice</h4></div></div>
+        <div class="item"><div class="item-body"><h4>Cashews (Kaju)</h4></div></div>
+        <div class="item"><div class="item-body"><h4>Brinjal</h4></div></div>
+        <div class="item"><div class="item-body"><h4>Pril dishwash liquid</h4></div></div>
+        <div class="item"><div class="item-body"><h4>Roasted chana</h4></div></div>
+        <div class="item"><div class="item-body"><h4>Carrot</h4></div></div>
+        <div class="item"><div class="item-body"><h4>Bitter gourd</h4></div></div>
+        <div class="item"><div class="item-body"><h4>Coccinia</h4></div></div>
+        <div class="grocery-section-label event">For upcoming pooja / event</div><div class="item"><div class="item-body"><h4>Curd</h4></div></div>
         <div class="item"><div class="item-body"><h4>Burelu (ingredients)</h4></div></div>
         <div class="item"><div class="item-body"><h4>Daddhojanam (curd rice - ingredients)</h4></div></div>
         <div class="item"><div class="item-body"><h4>Tamalapakulu (30)</h4></div></div>
@@ -262,19 +287,9 @@
         <div class="item"><div class="item-body"><h4>Puri (ingredients)</h4></div></div>
         <div class="item"><div class="item-body"><h4>Cotton Dhanda for Kalasham</h4></div></div>
         <div class="item"><div class="item-body"><h4>Saree for Devi</h4></div></div>
-        <div class="item"><div class="item-body"><h4>Milmaker</h4></div></div>
-        <div class="item"><div class="item-body"><h4>Chapati flour (Atta)</h4></div></div>
-        <div class="item"><div class="item-body"><h4>Rice bran oil</h4></div></div>
-        <div class="item"><div class="item-body"><h4>Dry dates (Karjur)</h4></div></div>
-        <div class="item"><div class="item-body"><h4>Rice</h4></div></div>
-        <div class="item"><div class="item-body"><h4>Cashews (Kaju)</h4></div></div>
-        <div class="item"><div class="item-body"><h4>Brinjal</h4></div></div>
-        <div class="item"><div class="item-body"><h4>Pril dishwash liquid</h4></div></div>
-        <div class="item"><div class="item-body"><h4>Roasted chana</h4></div></div>
-        <div class="item"><div class="item-body"><h4>Carrot</h4></div></div>
-        <div class="item"><div class="item-body"><h4>Bitter gourd</h4></div></div>
-        <div class="item"><div class="item-body"><h4>Coccinia</h4></div></div>
       </div></div></div>
+
+  <div class="family-manager" id="familyManager"><div class="fm-header"><span class="dot" style="background:var(--maroon);"></span>Family Manager</div><div class="fm-list" id="fmList"><div class="fm-row decision"><span class="fm-icon">&#9888;</span><div class="fm-body"><h4>Krishnashtami is in 7 days — no saved shopping list yet</h4><p>Want to give me the usual items for this one? I'll remember it for next year.</p></div></div></div></div>
 
   <footer>
     <span>Static v1 — marking items done resets on refresh until this is wired to live data. Real fix: sync with the Notion "Not relevant" checkbox.</span>
@@ -283,11 +298,11 @@
 
 <script>
   const items = [
-    {date:"Wed 2", title:"Credit Card Payment Due — Axis Bank ••0154", desc:"Flipkart Axis Bank Credit Card, statement ending XX54. Total due ₹1,07,547.00 (min due ₹2,151.00). Bill generated Aug 12, 2026. Source: CRED / Axis statement emails.", away:false},
     {date:"Wed 2", title:"Shop for Varalakshmi Vratam pooja items", desc:"Prep reminder for Varalakshmi Vratam + Sri Krishnashtami on Sep 4. Full shopping list (41 items - blouse pieces, coconut, bangles, flowers, fruits, prasadam ingredients, etc.) is staged on the Grocery List / kiosk, tagged \"Varalakshmi Vratam — one-time\".", away:false},
+    {date:"Wed 2", title:"Credit Card Payment Due — Axis Bank ••0154", desc:"Flipkart Axis Bank Credit Card, statement ending XX54. Total due ₹1,07,547.00 (min due ₹2,151.00). Bill generated Aug 12, 2026. Source: CRED / Axis statement emails.", away:false},
     {date:"Fri 4", title:"Varalakshmi Vratam (rescheduled) + Sri Krishnashtami — same day, two observances", desc:"No additional details", away:false},
-    {date:"Sat 5", title:"Credit Card Payment Due — ICICI Amazon Pay ••4005", desc:"Amazon Pay ICICI Bank Credit Card. Total due ₹13,597.43 (min due ₹9,290.00). Statement period Jul 19 – Aug 18, 2026. Source: ICICI statement email.", away:false},
     {date:"Sat 5", title:"Credit Card Payment Due — HDFC Millennia ••3345", desc:"HDFC Bank Millennia Credit Card. Total due ₹7,420.00 (min due ₹380.00). Bill generated Aug 15, 2026. Source: CRED / HDFC statement emails.", away:false},
+    {date:"Sat 5", title:"Credit Card Payment Due — ICICI Amazon Pay ••4005", desc:"Amazon Pay ICICI Bank Credit Card. Total due ₹13,597.43 (min due ₹9,290.00). Statement period Jul 19 – Aug 18, 2026. Source: ICICI statement email.", away:false},
   ];
 
   function render(){
