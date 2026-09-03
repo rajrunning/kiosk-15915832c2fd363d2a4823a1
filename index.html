@@ -222,15 +222,15 @@
       <div id="mealsList" class="scroll-area">
         <div class="meal-card"><div class="meal-day">Thursday — Breakfast</div><div class="meal-dish">Idli/Dosa (Idli rava)</div><div class="meal-note">Veg-only day (no eggs)</div></div>
         <div class="meal-card"><div class="meal-day">Thursday</div><div class="meal-dish">French beans curry</div></div>
-        <div class="meal-card meal-missing"><div class="meal-day">Friday (preview) — Breakfast</div><div class="meal-dish">Not planned yet</div></div>
-        <div class="meal-card meal-missing"><div class="meal-day">Friday (preview)</div><div class="meal-dish">Not planned yet</div></div>
+        <div class="meal-card"><div class="meal-day">Friday (preview) — Breakfast</div><div class="meal-dish">Idli/Dosa (Idli rava)</div><div class="meal-note">Krishnashtami / Varalakshmi Vratam – veg-only</div></div>
+        <div class="meal-card"><div class="meal-day">Friday (preview)</div><div class="meal-dish">Methi Aloo (Potato + Methi leaves)</div></div>
       </div>
     </div>
 
     <div class="panel">
       <div class="grocery-header">
         <h3 style="margin-bottom:0;"><span class="dot" style="background:var(--gold);"></span>Grocery</h3>
-        <span class="bulk-date" id="bulkDate">Bulk-shop: Tue, Sep 8 (low on Chilli powder (Karam), Groundnuts / Peanuts (Pallilu), Mustard seeds (Avaalu))</span>
+        <span class="bulk-date" id="bulkDate" title="low on Chilli powder (Karam), Groundnuts / Peanuts (Pallilu), Mustard seeds (Avaalu)">Bulk-shop: Tue, Sep 8</span>
       </div>
       <div class="scroll-area" id="groceryList">
         <div class="item"><div class="item-body"><h4>Upma rava (Sooji)</h4></div></div>
@@ -340,7 +340,7 @@
     </div>
   </div>
 
-  <div class="family-manager" id="familyManager"><div class="fm-header"><span class="dot" style="background:var(--maroon);"></span>Family Manager</div><div class="fm-list" id="fmList"><div class="fm-row decision"><span class="fm-icon">&#9888;</span><div class="fm-body"><h4>Krishnashtami is in 2 days — no saved shopping list yet</h4><p>Want to give me the usual items for this one? I'll remember it for next year.</p></div></div></div></div>
+  <div class="family-manager" id="familyManager"><div class="fm-header"><span class="dot" style="background:var(--maroon);"></span>Family Manager</div><div class="fm-list" id="fmList"><div class="fm-row decision"><span class="fm-icon">&#9888;</span><div class="fm-body"><h4>Tomorrow: Krishnashtami — no saved shopping list yet</h4><p>Want to give me the usual items for this one? I'll remember it for next year.</p></div></div></div></div>
 
   <footer>
     <span>Static v1 — marking items done resets on refresh until this is wired to live data. Real fix: sync with the Notion "Not relevant" checkbox.</span>
@@ -350,8 +350,8 @@
 <script>
   const items = [
     {date:"Thu 3", title:"Krishna Janmashtami — Costume Day at School", desc:"Children may come dressed as Lord Krishna, Radha, or in traditional attire. Label all costume items (flute, kirita/crown, jewellery, etc.) to avoid misplacing them. Source: EuroKids Abbigere, Euro Junior September 2026 calendar (from a forwarded PDF).", away:false},
-    {date:"Fri 4", title:"School Holiday — Krishna Janmashtami (Daycare open)", desc:"School closed for Krishna Janmashtami; classes resume next working day. Daycare will be working. Source: EuroKids Abbigere, Euro Junior September 2026 calendar (from a forwarded PDF).", away:false},
     {date:"Fri 4", title:"Varalakshmi Vratam (rescheduled) + Sri Krishnashtami — same day, two observances", desc:"No additional details", away:false},
+    {date:"Fri 4", title:"School Holiday — Krishna Janmashtami (Daycare open)", desc:"School closed for Krishna Janmashtami; classes resume next working day. Daycare will be working. Source: EuroKids Abbigere, Euro Junior September 2026 calendar (from a forwarded PDF).", away:false},
     {date:"Sat 5", title:"Credit Card Payment Due — ICICI Amazon Pay ••4005", desc:"Amazon Pay ICICI Bank Credit Card. Total due ₹13,597.43 (min due ₹9,290.00). Statement period Jul 19 – Aug 18, 2026. Source: ICICI statement email.", away:false},
     {date:"Sat 5", title:"Credit Card Payment Due — HDFC Millennia ••3345", desc:"HDFC Bank Millennia Credit Card. Total due ₹7,420.00 (min due ₹380.00). Bill generated Aug 15, 2026. Source: CRED / HDFC statement emails.", away:false},
     {date:"Tue 8", title:"Field Trip — Plant Nursery", desc:"Field trip to a Plant Nursery as part of the month's learning experience. Regular school timings. Source: EuroKids Abbigere, Euro Junior September 2026 calendar (from a forwarded PDF).", away:false},
