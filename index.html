@@ -203,7 +203,7 @@
         <div class="month-year">September 2026</div>
       </div>
     </div>
-    <div class="weather" id="weatherWidget" style="display:none"></div>
+    <div class="weather" id="weatherWidget"><span class="weather-icon">🌦️</span><span class="weather-main"><span class="weather-temp">30°/20°</span><span class="weather-label">Light drizzle · 24% rain</span></span></div>
     <div class="household-tag">Family<span id="clock">--:--</span></div>
   </header>
 
@@ -220,10 +220,10 @@
     <div class="panel">
       <h3><span class="dot" style="background:var(--leaf);"></span>What to cook</h3>
       <div id="mealsList" class="scroll-area">
-        <div class="meal-card meal-missing"><div class="meal-day">Saturday — Breakfast</div><div class="meal-dish">Not planned yet</div></div>
-        <div class="meal-card meal-missing"><div class="meal-day">Saturday</div><div class="meal-dish">Not planned yet</div></div>
-        <div class="meal-card meal-missing"><div class="meal-day">Sunday (preview) — Breakfast</div><div class="meal-dish">Not planned yet</div></div>
-        <div class="meal-card meal-missing"><div class="meal-day">Sunday (preview)</div><div class="meal-dish">Not planned yet</div></div>
+        <div class="meal-card"><div class="meal-day">Saturday — Breakfast</div><div class="meal-dish">Idli/Dosa (Idli rava)</div><div class="meal-note">Veg-only day (no eggs)</div></div>
+        <div class="meal-card"><div class="meal-day">Saturday</div><div class="meal-dish">Pappu + papad</div></div>
+        <div class="meal-card"><div class="meal-day">Sunday (preview) — Breakfast</div><div class="meal-dish">Eggs (boiled/omelette)</div></div>
+        <div class="meal-card"><div class="meal-day">Sunday (preview)</div><div class="meal-dish">Fish curry</div></div>
       </div>
     </div>
 
@@ -297,7 +297,8 @@
     </div>
   </div>
 
-  <div class="family-manager" id="familyManager"><div class="fm-header"><span class="dot" style="background:var(--maroon);"></span>Family Manager</div><div class="fm-list" id="fmList"><div class="fm-row decision"><span class="fm-icon">&#9888;</span><div class="fm-body"><h4>1 day ago: Krishnashtami — no saved shopping list yet</h4><p>Want to give me the usual items for this one? I'll remember it for next year.</p></div></div></div></div>
+  <div class="family-manager" id="familyManager"><div class="fm-header"><span class="dot" style="background:var(--maroon);"></span>Family Manager</div><div class="fm-list" id="fmList"><div class="fm-row decision"><span class="fm-icon">&#9888;</span><div class="fm-body"><h4>In 6 days: Polala Amavasya — no saved shopping list yet</h4><p>Want to give me the usual items for this one? I'll remember it for next year. (Or, if you're skipping this…</p></div></div>
+        <div class="fm-row decision"><span class="fm-icon">&#9888;</span><div class="fm-body"><h4>1 day ago: Krishnashtami — no saved shopping list yet</h4><p>Want to give me the usual items for this one? I'll remember it for next year.</p></div></div></div></div>
 
   <footer>
     <span>Static v1 — marking items done resets on refresh until this is wired to live data. Real fix: sync with the Notion "Not relevant" checkbox.</span>
@@ -310,6 +311,7 @@
     {date:"Sat 5", title:"Credit Card Payment Due — HDFC Millennia ••3345", desc:"HDFC Bank Millennia Credit Card. Total due ₹7,420.00 (min due ₹380.00). Bill generated Aug 15, 2026. Source: CRED / HDFC statement emails.", away:false},
     {date:"Tue 8", title:"Field Trip — Plant Nursery", desc:"Field trip to a Plant Nursery as part of the month's learning experience. Regular school timings. Source: EuroKids Abbigere, Euro Junior September 2026 calendar (from a forwarded PDF).", away:false},
     {date:"Wed 9", title:"Society Maintenance Bill Due — Brigade Parkside North (C-F-0020)", desc:"Amount due ₹4,387.50 for apartment C-F-0020. Source: NoBrokerHood, \"New Maintenance Charges Bill is added for C-F-0020\" (received 1 Sep 2026).\n\nAuto-added from email.", away:false},
+    {date:"Wed 9", title:"Shop for Polala Amavasya pooja items", desc:"Pooja shopping list for Polala Amavasya is ready — see the 'Special Event' panel on the family dashboard.", away:false},
     {date:"Fri 11", title:"Ganesha Chaturthi — Idol Craft Day at School", desc:"Bring a small Ganesha idol made of natural clay/mud to paint and decorate at school — label it with your kid's name. Traditional attire welcome. Source: EuroKids Abbigere, Euro Junior September 2026 calendar (from a forwarded PDF).", away:false},
     {date:"Mon 14", title:"Vinayaka Chavithi (Ganesh Chaturthi)", desc:"No additional details", away:false},
     {date:"Mon 14", title:"School Holiday — Swarna Gowri Vratam &amp; Ganesha Chaturthi (Daycare closed)", desc:"School closed for Swarna Gowri Vartam and Ganesha Chaturthi; classes resume next working day. Daycare will NOT be working this day — plan childcare accordingly. Source: EuroKids Abbigere, Euro Junior September 2026 calendar (from a forwarded PDF).", away:false},
